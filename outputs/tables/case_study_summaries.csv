@@ -1,0 +1,4 @@
+case_id,state,district,pincode,selection_reason,period_start,period_end,mean_assi,max_assi,mean_upr,max_upr,max_assi_mom,volatility_latest,anomaly_months_count,key_insight_1,key_insight_2,uidai_action_recommendation
+1,Uttar Pradesh,Moradabad,244001,Max Stress (ASSI),2025-03,2025-12,2111.53,3375.4,777.02,6962.0,1.07,0.37,0,Peak load occurred in 2025-07,Dominant workload is Enrolment,Deploy mobile camp
+2,Delhi,North East Delhi,110094,Max Update Pressure,2025-03,2025-12,1698.83,3357.5,2726.73,12301.0,2.43,0.61,0,Peak load occurred in 2025-07,Dominant workload is Updates,Set up permanent update desk
+3,Uttar Pradesh,Prayagraj,221505,High Volatility,2025-04,2025-12,34.61,248.0,6.04,17.0,82.0,2.16,1,Peak load occurred in 2025-07,Dominant workload is Enrolment,Deploy mobile camp
