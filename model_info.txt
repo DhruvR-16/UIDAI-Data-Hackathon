@@ -2,90 +2,31 @@
 
 We are building a demand forecasting model that predicts Aadhaar service workload for the next 1–3 months, so UIDAI can:
 
-allocate operators (staffing planning)
-
-prepare camps / kits in advance
-
-identify future stress hotspots
-
-improve Aadhaar system efficiency and citizen service delivery
+- allocate operators (staffing planning)
+- prepare camps / kits in advance
+- identify future stress hotspots
+- improve Aadhaar system efficiency and citizen service delivery
 
 Instead of forecasting only enrolments or only updates, we forecast a combined operational KPI:
 
 ✅ ASSI (Aadhaar Service Stress Index)
 
+
 2) 📌 Key Concept: What is ASSI?
 
-ASSI measures total Aadhaar service workload at a location:
+ASSI measures total Aadhaar service workload at a location.
 
 ASSI formula:
-𝐴
-𝑆
-𝑆
-𝐼
-=
-0.5
-⋅
-𝐸
-𝑛
-𝑟
-𝑜
-𝑙
-𝑚
-𝑒
-𝑛
-𝑡
-+
-0.3
-⋅
-𝐷
-𝑒
-𝑚
-𝑜
-𝑔
-𝑟
-𝑎
-𝑝
-ℎ
-𝑖
-𝑐
-𝑈
-𝑝
-𝑑
-𝑎
-𝑡
-𝑒
-𝑠
-+
-0.2
-⋅
-𝐵
-𝑖
-𝑜
-𝑚
-𝑒
-𝑡
-𝑟
-𝑖
-𝑐
-𝑈
-𝑝
-𝑑
-𝑎
-𝑡
-𝑒
-𝑠
-ASSI=0.5⋅Enrolment+0.3⋅DemographicUpdates+0.2⋅BiometricUpdates
+ASSI = 0.5⋅Enrolment + 0.3⋅DemographicUpdates + 0.2⋅BiometricUpdates
 
 Interpretation:
 
-Enrolment is highest effort (full Aadhaar creation process)
-
-Demographic updates are medium effort
-
-Biometric updates are smaller but important periodic workload
+- Enrolment is highest effort (full Aadhaar creation process)
+- Demographic updates are medium effort
+- Biometric updates are smaller but important periodic workload
 
 So forecasting ASSI directly predicts service center stress/load.
+
 
 3) ✅ Why Forecasting ASSI matters (Impact)
 
@@ -93,403 +34,264 @@ UIDAI wants “predictive indicators” + “system improvement”.
 
 Forecasting ASSI helps:
 
-predict peak demand months
+- predict peak demand months
+- forecast stress hotspots
+- reduce overcrowding & delays through proactive planning
 
-forecast stress hotspots
-
-reduce overcrowding & delays through proactive planning
 
 4) 📂 Inputs (What data is used)
 
 We DO NOT train on forecast output CSVs.
 
-We train on historical master dataset:
+We train on historical master dataset.
 
 Required Input File:
-
 ./outputs/master_monthly.csv
 
 Expected columns:
 
-month_year (YYYY-MM)
-
-state
-
-district
-
-pincode
-
-enrol_total
-
-demo_total
-
-bio_total
-
-assi ✅ (target variable)
+- month_year (YYYY-MM)
+- state
+- district
+- pincode
+- enrol_total
+- demo_total
+- bio_total
+- assi ✅ (target variable)
 
 Optional columns (if available):
 
-upr
+- upr
+- assi_mom
+- vol6
 
-assi_mom
-
-vol6
 
 5) 🎯 Forecasting Task Definition
-Target:
 
+Target:
 Predict ASSI
 
 Horizon:
-
 Forecast next:
-
-1 month (most actionable)
-
-up to 3 months (planning horizon)
+- 1 month (most actionable)
+- up to 3 months (planning horizon)
 
 Granularity:
-
 We forecast only top hotspots to keep results stable and useful.
 
 We will forecast:
 ✅ top 20 pincodes or districts by mean ASSI
 
 Input list comes from:
-
 ./outputs/tables/top25_mean_assi.csv
+
 
 6) 🧠 Models Used (What approach we follow)
 
 We use a 2-model setup:
 
+
 Model A — Baseline (for benchmark)
 
 ✅ Simple Moving Average (SMA-3)
 
-𝑦
-^
-𝑡
-+
-1
-=
-𝑚
-𝑒
-𝑎
-𝑛
-(
-𝑦
-𝑡
-,
-𝑦
-𝑡
-−
-1
-,
-𝑦
-𝑡
-−
-2
-)
-y
-^
-	​
-
-t+1
-	​
-
-=mean(y
-t
-	​
-
-,y
-t−1
-	​
-
-,y
-t−2
-	​
-
-)
+yhat(t+1) = mean( y(t), y(t−1), y(t−2) )
 
 Purpose:
+- provides a baseline benchmark
+- used to show improvement
 
-provides a baseline benchmark
-
-used to show improvement
 
 Model B — Main Model (high impact)
 
 ✅ Prophet Forecasting Model (recommended)
 
 Prophet learns:
-
-trend
-
-seasonal patterns
-
-local changes (changepoints)
+- trend
+- seasonal patterns
+- local changes (changepoints)
 
 Prophet output includes:
+- prediction (yhat)
+- confidence interval (yhat_lower, yhat_upper)
 
-prediction (yhat)
-
-confidence interval (yhat_lower, yhat_upper)
 
 7) 📌 Training workflow (How to implement)
+
 Step 1 — Load data
 
-Read master_monthly.csv
-
-Convert month_year to date:
+- Read master_monthly.csv
+- Convert month_year to date:
 
 ds = month_year + '-01' converted to datetime
 
 Prophet requires:
+- ds = date column
+- y = target column (ASSI)
 
-ds = date column
-
-y = target column (ASSI)
 
 Step 2 — Select hotspots
 
-Select top 20 from:
-
-top25_mean_assi.csv
+- Select top 20 from:
+./outputs/tables/top25_mean_assi.csv
 
 If not available:
-Compute mean ASSI by (state, district, pincode) and select top 20.
+- Compute mean ASSI by (state, district, pincode) and select top 20.
+
 
 Step 3 — Backtesting (mandatory)
 
 To show model quality, evaluate using time-based split:
 
 Train set: all months except last 2 months
-
 Test set: last 2 months
 
 Train Prophet on train set.
 Predict test set.
 Compute error.
 
+
 8) ✅ Evaluation metrics
 
 Use forecasting metrics:
 
 SMAPE (preferred)
-𝑆
-𝑀
-𝐴
-𝑃
-𝐸
-=
-100
-%
-𝑛
-∑
-∣
-𝑦
-−
-𝑦
-^
-∣
-(
-∣
-𝑦
-∣
-+
-∣
-𝑦
-^
-∣
-)
-/
-2
-SMAPE=
-n
-100%
-	​
 
-∑
-(∣y∣+∣
-y
-^
-	​
-
-∣)/2
-∣y−
-y
-^
-	​
-
-∣
-	​
-
+SMAPE = (100% / n) * Σ [ |y - yhat| / ( (|y| + |yhat|)/2 ) ]
 
 Why:
-
-stable even when values are small
+- stable even when values are small
 
 Optionally:
-
-MAPE (with +1 stabilization)
+- MAPE (with +1 stabilization)
 
 We will report:
+- Prophet SMAPE
+- baseline SMA SMAPE
 
-Prophet SMAPE
-
-baseline SMA SMAPE
 
 9) 📤 Outputs (What files to generate)
-Output 1 — Forecast table (Top hotspots)
 
+Output 1 — Forecast table (Top hotspots)
 ./outputs/tables/forecast_top_hotspots_prophet_3m.csv
 
 Columns:
+- state, district, pincode
+- forecast_month
+- yhat (predicted ASSI)
+- yhat_lower
+- yhat_upper
 
-state, district, pincode
-
-forecast_month
-
-yhat (predicted ASSI)
-
-yhat_lower
-
-yhat_upper
 
 Output 2 — Next month hotspot ranking
-
 ./outputs/tables/top10_predicted_hotspots_next_month.csv
 
 Ranking based on highest predicted ASSI for next month.
 
-Output 3 — Model evaluation
 
+Output 3 — Model evaluation
 ./outputs/tables/model_backtest_scores.csv
 
 Columns:
+- state, district, pincode
+- smape_prophet
+- smape_baseline
 
-state, district, pincode
-
-smape_prophet
-
-smape_baseline
 
 Output 4 — Forecast plots (for PDF)
 
 Generate plots for top 5 hotspots:
-./outputs/figures/forecast_hotspot_1.png ... forecast_hotspot_5.png
+./outputs/figures/forecast_hotspot_1.png
+./outputs/figures/forecast_hotspot_2.png
+./outputs/figures/forecast_hotspot_3.png
+./outputs/figures/forecast_hotspot_4.png
+./outputs/figures/forecast_hotspot_5.png
 
 Each plot includes:
-
-historical ASSI line
-
-forecast line
-
-confidence interval band
+- historical ASSI line
+- forecast line
+- confidence interval band
 
 Also generate Prophet components plot for 1 hotspot:
 ./outputs/figures/prophet_components_example.png
 
+
 10) 📌 Interpretation (What we will write in report)
 
 We will mention:
+- Forecast identifies expected next-month hotspots
+- Confidence intervals show uncertainty
+- UIDAI can use rankings to allocate resources
+- Peak month calendar can guide camp scheduling
 
-Forecast identifies expected next-month hotspots
-
-Confidence intervals show uncertainty
-
-UIDAI can use rankings to allocate resources
-
-Peak month calendar can guide camp scheduling
 
 11) ✅ How this connects to our full hackathon project
 
 Other modules already produce:
-
-ASSI hotspot rankings
-
-Emerging hotspots (growth)
-
-Volatility zones
-
-Anomaly detection
+- ASSI hotspot rankings
+- Emerging hotspots (growth)
+- Volatility zones
+- Anomaly detection
 
 This forecasting model adds:
 ✅ predictive indicator
 ✅ actionable hotspot ranking for next month
 ✅ operational planning capability
 
-This covers UIDAI evaluation criteria strongly.
+This covers the UIDAI evaluation criteria strongly.
 
 
-
-
-
-
-
-2nd explantion in short 
-
-
-
-
+------------------------------------------------------------
+2nd explanation in short
+------------------------------------------------------------
 
 Forecast ASSI (Aadhaar Service Stress Index) for the top 20 hotspots (pincode/district) for the next 3 months using Prophet (and compare with a simple Moving Average baseline).
 
-Inputs: ./outputs/master_monthly.csv + ./outputs/tables/top25_mean_assi.csv
+Inputs:
+./outputs/master_monthly.csv
+./outputs/tables/top25_mean_assi.csv
+
 Outputs needed:
-
-forecast_top_hotspots_prophet_3m.csv (with yhat + confidence intervals)
-
-top10_predicted_hotspots_next_month.csv
-
-model_backtest_scores.csv (SMAPE Prophet vs baseline)
-
-5 forecast plots for top hotspots
+- forecast_top_hotspots_prophet_3m.csv (with yhat + confidence intervals)
+- top10_predicted_hotspots_next_month.csv
+- model_backtest_scores.csv (SMAPE Prophet vs baseline)
+- 5 forecast plots for top hotspots
 
 Let me know once you start — I’ll integrate it into the final PDF.
 
+
+------------------------------------------------------------
 Option 2 (Clear + detailed)
+------------------------------------------------------------
 
 Hey! I need you to handle the Forecasting Model module for our UIDAI hackathon project.
 
 ✅ What to build
-
 A Demand Forecasting Engine to predict Aadhaar service workload using:
 Target: ASSI (Aadhaar Service Stress Index = 0.5enrol + 0.3demo + 0.2*bio)
 
 ✅ Why
-
 This will be our “predictive indicator” section (high marks: Technical + Impact). UIDAI can use it for staffing/camp planning.
 
 ✅ Data
-
 Use:
-
 ./outputs/master_monthly.csv (historical monthly ASSI per location)
-
 ./outputs/tables/top25_mean_assi.csv (select top 20 hotspots)
 
-Prophet expects: ds (date) + y (ASSI)
+Prophet expects:
+ds (date) + y (ASSI)
 
 ✅ Required work
-
 Select top 20 unique hotspots (state/district/pincode)
 
 For each hotspot:
-
-train Prophet
-
-forecast next 3 months
+- train Prophet
+- forecast next 3 months
 
 Backtesting:
-
-train = all months except last 2
-
-test = last 2 months
-
-metric = SMAPE
+- train = all months except last 2
+- test = last 2 months
+- metric = SMAPE
 
 Compare against baseline:
-
-3-month moving average forecast
+- 3-month moving average forecast
