@@ -1,0 +1,58 @@
+state,district,pincode,forecast_month,yhat
+Uttar Pradesh,Moradabad,244001,2026-01,1714.1
+Uttar Pradesh,Moradabad,244001,2026-02,1714.1
+Uttar Pradesh,Moradabad,244001,2026-03,1714.1
+Delhi,North East Delhi,110094,2026-01,971.5
+Delhi,North East Delhi,110094,2026-02,971.5
+Delhi,North East Delhi,110094,2026-03,971.5
+Uttar Pradesh,Aligarh,202001,2026-01,1113.8
+Uttar Pradesh,Aligarh,202001,2026-02,1113.8
+Uttar Pradesh,Aligarh,202001,2026-03,1113.8
+Uttar Pradesh,Saharanpur,247001,2026-01,1140.0
+Uttar Pradesh,Saharanpur,247001,2026-02,1140.0
+Uttar Pradesh,Saharanpur,247001,2026-03,1140.0
+Delhi,West Delhi,110059,2026-01,908.3
+Delhi,West Delhi,110059,2026-02,908.3
+Delhi,West Delhi,110059,2026-03,908.3
+Uttar Pradesh,Firozabad,283203,2026-01,939.37
+Uttar Pradesh,Firozabad,283203,2026-02,939.37
+Uttar Pradesh,Firozabad,283203,2026-03,939.37
+Uttar Pradesh,Rampur,244901,2026-01,938.6
+Uttar Pradesh,Rampur,244901,2026-02,938.6
+Uttar Pradesh,Rampur,244901,2026-03,938.6
+Uttar Pradesh,Shahjahanpur,242001,2026-01,958.64
+Uttar Pradesh,Shahjahanpur,242001,2026-02,958.64
+Uttar Pradesh,Shahjahanpur,242001,2026-03,958.64
+Maharashtra,Aurangabad,431001,2026-01,1103.37
+Maharashtra,Aurangabad,431001,2026-02,1103.37
+Maharashtra,Aurangabad,431001,2026-03,1103.37
+Uttar Pradesh,Meerut,250002,2026-01,1114.17
+Uttar Pradesh,Meerut,250002,2026-02,1114.17
+Uttar Pradesh,Meerut,250002,2026-03,1114.17
+Haryana,Faridabad,121004,2026-01,891.66
+Haryana,Faridabad,121004,2026-02,891.66
+Haryana,Faridabad,121004,2026-03,891.66
+Madhya Pradesh,Barwani,451666,2026-01,631.96
+Madhya Pradesh,Barwani,451666,2026-02,631.96
+Madhya Pradesh,Barwani,451666,2026-03,631.96
+Maharashtra,Nashik,423203,2026-01,1158.68
+Maharashtra,Nashik,423203,2026-02,1158.68
+Maharashtra,Nashik,423203,2026-03,1158.68
+Uttar Pradesh,Pilibhit,262001,2026-01,1059.7
+Uttar Pradesh,Pilibhit,262001,2026-02,1059.7
+Uttar Pradesh,Pilibhit,262001,2026-03,1059.7
+Madhya Pradesh,Morena,476001,2026-01,683.1
+Madhya Pradesh,Morena,476001,2026-02,683.1
+Madhya Pradesh,Morena,476001,2026-03,683.1
+Delhi,North West Delhi,110086,2026-01,942.23
+Delhi,North West Delhi,110086,2026-02,942.23
+Delhi,North West Delhi,110086,2026-03,942.23
+Maharashtra,Thane,421302,2026-01,966.58
+Maharashtra,Thane,421302,2026-02,966.58
+Maharashtra,Thane,421302,2026-03,966.58
+Uttar Pradesh,Pilibhit,262122,2026-01,671.47
+Uttar Pradesh,Pilibhit,262122,2026-02,671.47
+Uttar Pradesh,Pilibhit,262122,2026-03,671.47
+Haryana,Panipat,132103,2026-01,826.5
+Haryana,Panipat,132103,2026-02,826.5
+Haryana,Panipat,132103,2026-03,826.5
