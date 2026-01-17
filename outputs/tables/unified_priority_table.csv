@@ -1,0 +1,31 @@
+rank,state,district,pincode,assi,upr,assi_mom,type,recommended_action,priority_score
+1,Madhya Pradesh,Ratlam,457001,2074.8,22.00719424460432,0.7813438599502273,Critical (Stress + Maintenance + Emerging),Immediate intervention + monitoring,0.6574631226939925
+2,Uttar Pradesh,Moradabad,244001,1551.1,9.576797385620916,-0.3591395185598083,Critical (Stress + Maintenance),Immediate intervention + monitoring,0.43880603293873943
+3,Delhi,North West Delhi,110086,1424.9,5.805933250927071,0.5472005208333334,Critical (Stress + Emerging),Immediate intervention + monitoring,0.38663750151682996
+4,Delhi,North East Delhi,110094,1292.3000000000002,8.619926199261993,0.3375736891095255,Critical (Stress + Maintenance),Immediate intervention + monitoring,0.37326220308089836
+5,Maharashtra,Aurangabad,431001,1124.0,7.058614564831261,-0.15292523153377,Stress Hotspot,Deploy operators/kits + extend hours,0.31934751191995925
+6,Uttar Pradesh,Aligarh,202001,1113.8,6.9763636363636365,-0.1604157252598284,Stress Hotspot,Deploy operators/kits + extend hours,0.3162779765009805
+7,Delhi,West Delhi,110059,1105.5,6.184745762711865,0.2168701198724294,Stress Hotspot,Deploy operators/kits + extend hours,0.31064991137156733
+8,Manipur,Imphal East,795003,41.400000000000006,43.0,-0.3792093704245972,Maintenance Heavy,Dedicated update counters + pipeline fix,0.30807216063278325
+9,Uttar Pradesh,Firozabad,283203,993.4,9.6968085106383,-0.0825721930067349,Maintenance Heavy,Dedicated update counters + pipeline fix,0.30663397456714087
+10,Uttar Pradesh,Saharanpur,247001,1140.0,4.273525721455458,-0.1427498121712997,Stress Hotspot,Deploy operators/kits + extend hours,0.30382356226656326
+11,Delhi,North East Delhi,110093,712.3,18.048192771084334,0.7329931972789113,Critical (Maintenance + Emerging),Immediate intervention + monitoring,0.3012544242587826
+12,Uttar Pradesh,Shahjahanpur,242001,1011.7,8.11804008908686,-0.125474956822107,Critical (Stress + Maintenance),Immediate intervention + monitoring,0.299813881447585
+13,Maharashtra,Nashik,423203,1010.1,6.845857418111754,-0.2753529706873074,Stress Hotspot,Deploy operators/kits + extend hours,0.2897997971197594
+14,Haryana,Faridabad,121004,928.7,7.364464692482915,-0.1370091896407686,Normal,Baseline,0.27449651628130717
+15,Haryana,Panipat,132103,915.7,7.337962962962963,0.0350005645252342,Normal,Baseline,0.27204276434790947
+16,Uttar Pradesh,Rampur,244901,938.6,6.374749498997996,-0.1617450263181373,Normal,Baseline,0.26985305475357974
+17,Uttar Pradesh,Kushinagar,274304,684.1,7.834415584415584,-0.0160850208243573,Normal,Baseline,0.219437184579729
+18,Manipur,Imphal East,795130,37.5,30.6,-0.6329837940896091,Maintenance Heavy,Dedicated update counters + pipeline fix,0.21934601704885232
+19,Delhi,West Delhi,110041,614.5,9.415966386554622,0.2561224489795918,Maintenance Heavy,Dedicated update counters + pipeline fix,0.2150658110914149
+20,Madhya Pradesh,Barwani,451666,754.5999999999999,3.587521663778163,0.2603836530442033,Normal,Baseline,0.2081859369083444
+21,Madhya Pradesh,Singrauli,486886,745.8,2.651603498542274,0.3390711852250312,Normal,Baseline,0.19993082313925356
+22,Delhi,South Delhi,110062,618.1,6.1104651162790695,0.0447181910226122,Normal,Baseline,0.1918098799507288
+23,Delhi,South Delhi,110044,511.9,5.695205479452055,-0.2490483162518302,Normal,Baseline,0.1618443519352505
+24,Madhya Pradesh,Sidhi,486661,494.7,3.4318181818181817,0.0170291341813705,Normal,Baseline,0.14324476201666064
+25,Delhi,East Delhi,110096,334.0,6.77639751552795,0.0026938042502244,Normal,Baseline,0.12778040824413597
+26,Arunachal Pradesh,Changlang,792121,4.7,10.0,-0.583941605839416,Maintenance Heavy,Dedicated update counters + pipeline fix,0.06796704112011936
+27,Chandigarh,Chandigarh,160014,116.2,4.3896103896103895,-0.1815642458100557,Normal,Baseline,0.057715921287885434
+28,Meghalaya,West Garo Hills,794002,29.1,6.266666666666667,-0.0414012738853502,Normal,Baseline,0.05052570274554015
+29,Gujarat,Chhotaudepur,391110,4.0,4.666666666666667,0.4705882352941175,Emerging Hotspot,Plan camps + proactive staffing,0.03588577306654356
+30,Assam,Golaghat,785625,27.200000000000003,4.1,0.0254545454545455,Normal,Baseline,0.03528735370350946
