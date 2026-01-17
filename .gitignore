@@ -1,2 +1,5 @@
 .venv/
 .idea/
+api_data_aadhaar_enrollment/
+api_data_aadhaar_biometric/
+api_data_aadhaar_demographic/

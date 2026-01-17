@@ -1,2 +1,11 @@
-state,district,pincode,forecast_month,forecast_assi,method
-West Bengal,Dinajpur Uttar,733210,2025-08,1356.5,3-Month MA Baseline
+rank,state,district,pincode,forecast_month,yhat
+1,Uttar Pradesh,Moradabad,244001,2026-01,1714.1
+2,Maharashtra,Nashik,423203,2026-01,1158.68
+3,Uttar Pradesh,Saharanpur,247001,2026-01,1140.0
+4,Uttar Pradesh,Meerut,250002,2026-01,1114.17
+5,Uttar Pradesh,Aligarh,202001,2026-01,1113.8
+6,Maharashtra,Aurangabad,431001,2026-01,1103.37
+7,Uttar Pradesh,Pilibhit,262001,2026-01,1059.7
+8,Delhi,North East Delhi,110094,2026-01,971.5
+9,Maharashtra,Thane,421302,2026-01,966.58
+10,Uttar Pradesh,Shahjahanpur,242001,2026-01,958.64
